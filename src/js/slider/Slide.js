@@ -30,6 +30,7 @@ export class Slide {
         this._media = null;
         this._mediaclass = {};
         this._text = {};
+        this._text2 = {};
         this._background_media = null;
 
         // State
@@ -40,6 +41,7 @@ export class Slide {
         this.has = {
             headline: false,
             text: false,
+            text2: false,
             media: false,
             title: false,
             background: {
@@ -59,6 +61,7 @@ export class Slide {
             end_date: null,
             location: null,
             text: null,
+            text2: null,
             media: null,
             autolink: true
         };
@@ -239,6 +242,10 @@ export class Slide {
         if (this.data.text && this.data.text.headline) {
             this.has.headline = true;
         }
+        if (this.data.text2 && this.data.text2.text) {
+            this.has.text2 = true;
+        }
+
 
         // Create Media
         if (this.has.media) {
@@ -257,8 +264,6 @@ export class Slide {
             this._text = new Text(this.data.text, { title: this.has.title, language: this.options.language, autolink: this.data.autolink });
             this._text.addDateText(this.getFormattedDate());
         }
-
-
 
         // Add to DOM
         if (!this.has.text && !this.has.headline && this.has.media) {

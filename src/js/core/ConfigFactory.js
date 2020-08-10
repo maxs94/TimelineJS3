@@ -52,7 +52,8 @@ function extractGoogleEntryData_V1(item) {
         },
         text: {
             headline: item_data.headline || '',
-            text: item_data.text || ''
+            text: item_data.text || '',
+            text2: item_data.text2 || ''
         },
         group: item_data.tag || '',
         type: item_data.type || ''
@@ -92,7 +93,8 @@ function extractGoogleEntryData_V3(item) {
         },
         text: {
             headline: item_data.headline || '',
-            text: item_data.text || ''
+            text: item_data.text || '',
+            text2: item_data.text2 || ''
         },
         start_date: {
             year: clean_integer(item_data.year),
@@ -154,7 +156,7 @@ var getGoogleItemExtractor = function(data) {
     if (typeof entry.gsx$startdate !== 'undefined') {
         return extractGoogleEntryData_V1;
     } else if (typeof entry.gsx$year !== 'undefined') {
-        var headers_V3 = ['month', 'day', 'time', 'endmonth', 'endyear', 'endday', 'endtime', 'displaydate', 'headline', 'text', 'media', 'mediacredit', 'mediacaption', 'mediathumbnail', 'type', 'group', 'background'];
+        var headers_V3 = ['month', 'day', 'time', 'endmonth', 'endyear', 'endday', 'endtime', 'displaydate', 'headline', 'text', 'text2', 'media', 'mediacredit', 'mediacaption', 'mediathumbnail', 'type', 'group', 'background'];
         return extractGoogleEntryData_V3;
     }
     throw new TLError("invalid_data_format_err");
@@ -243,7 +245,8 @@ function extractGoogleEntryData_V4(column, item) {
         },
         text: {
             headline: item_data.headline || '',
-            text: item_data.text || ''
+            text: item_data.text || '',
+            text2: item_data.text2 || ''
         },
         start_date: {
             year: clean_integer(item[0]),

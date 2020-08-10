@@ -20,7 +20,8 @@ export class Text {
 		this.data = { // defaults
 			unique_id: "",
 			headline: "headline",
-			text: "text"
+			text: "text",
+			text2: "text"
 		}
 
 		setData(this, data); // override defaults
@@ -106,6 +107,14 @@ export class Text {
 			text_content += htmlify(this.options.autolink == true ? linkify(this.data.text) : this.data.text);
 			this._el.content				= DOM.create("div", "tl-text-content", this._el.content_container);
 			this._el.content.innerHTML		= text_content;
+		}
+		
+		// Text2
+		if (this.data.text2 != "") {
+			var text2_content = "";
+			text2_content += htmlify(this.options.autolink == true ? linkify(this.data.text2) : this.data.text2);
+			this._el.content				= DOM.create("div", "tl-text2-content", this._el.content_container);
+			this._el.content.innerHTML		= text2_content;
 		}
 
 		// Fire event that the slide is loaded

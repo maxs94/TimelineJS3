@@ -5,7 +5,7 @@ import TLError from "../core/TLError"
 import DOMPurify from 'dompurify';
 
 const SANITIZE_FIELDS = {
-    text: ['headline', 'text'],
+    text: ['headline', 'text', 'text2'],
     media: ['caption', 'credit'] // media "URL" must be sanitized in Media classes to avoid messing up URLs
 }
 
@@ -343,7 +343,10 @@ export class TimelineConfig {
             slide.text = {};
         }
         fillIn(slide.text, 'text');
+        fillIn(slide.text, 'text2');
         fillIn(slide.text, 'headline');
+
+        console.log(slide.text);
 
         _process_fields(slide, _tl_sanitize, SANITIZE_FIELDS)
             // handle media.url separately
